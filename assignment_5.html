@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expt_5</title>
+  </head>
+  <body>
+    <h1>42215 Mrugank</h1>
+    <h1>Countdown Timer</h1>
+    
+    <label for="end-date">Enter End Date and Time: </label>
+    <input type="datetime-local" id="end-date" />
+    <button id="start-timer">Start Timer</button>
+    
+    <p id="countdown"></p>
+    
+    <script>
+      let countdownInterval;
+
+      function startCountdown() {
+        const endDateInput = document.getElementById("end-date");
+        const endDateValue = endDateInput.value;
+
+        if (endDateValue) {
+          const targetDate = new Date(endDateValue).getTime();
+          countdownInterval = setInterval(() => {
+            updateCountdown(targetDate);
+          }, 1000);
+        }
+      }
+
+      function updateCountdown(targetDate) {
+        const currentTime = new Date().getTime();
+        const timeRemaining = targetDate - currentTime;
+
+        if (timeRemaining > 0) {
+          const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+          const countdownElement = document.getElementById("countdown");
+          countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        } else {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").innerHTML = "Expired";
+        }
+      }
+
+      document.getElementById("start-timer").addEventListener("click", startCountdown);
+    </script>
+  </body>
+</html>

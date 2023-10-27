@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 8</title>
+    <style>
+     
+      body {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body id="body" style="text-align: center">
+   
+    <script>
+     
+      function changeBackgroundColorOnMouseOver() {
+        document.getElementById("body").style.backgroundColor = "yellow";
+      }
+      function changeBackgroundColorOnFocus() {
+        document.getElementById("body").style.backgroundColor = "red";
+      }
+      function resetBackgroundColor() {
+        document.getElementById("body").style.backgroundColor = "white";
+      }
+      document
+        .getElementById("body")
+        .addEventListener("mouseover", changeBackgroundColorOnMouseOver);
+      document
+        .getElementById("body")
+        .addEventListener("mouseout", resetBackgroundColor);
+      function handleFocusEvent() {
+        changeBackgroundColorOnFocus();
+      }
+    </script>
+    <h2>Society for Computer Technology and Research's</h2>
+    <h1>Pune Institute of Computer Technology</h1>
+    <h4>Department of Electronics and Telecommunications</h4>
+    <img src="/pic.jpg" alt="PICT Logo" />
+    <img src="/download.jpeg" alt="PICT Image" />
+    <button onfocus="handleFocusEvent()">Focus Me</button>
+  </body>
+</html>

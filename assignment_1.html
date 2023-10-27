@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1: Calculate Area of Shapes</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h2>42215 Mrugank Deshpande</h2>
+
+    </div>
+    <div>
+        <h2 style="text-align:center" >Area of Rectangle</h2>
+        <div style="text-align:center">
+            <div>
+                <input id="length" type="number">
+                <label> Enter length of rectangle<label>
+            </div>
+            <br>
+            <div>
+                <input id= "width" type="number">
+                <label> Enter breadth of rectangle<label></label>
+            </div>
+            <br>
+            <div>
+                <button onclick="areaOfrectangle()">Calculate Area</button>
+                <h3 id="ans"></h3>
+            </div>
+            <br>
+           
+        </div>
+        
+    </div>
+    <div>
+        <h2 style="text-align: center;">Area of Circle</h2>
+        <div style="text-align: center;">
+            <div>
+                <input id="radius" type="number">
+                <label> Enter radius of circle<label>
+            </div>
+            <br>
+            <div>
+                <button onclick="areaOfCircle()">Calculate Area</button>
+                <h3 id="ans1"></h3>
+            </div>
+            <br>
+        
+        </div>
+    </div>
+    <div>
+        <h2 style="text-align:center">Area of triangle</h2>
+        <div style="text-align:center">
+            <div  >
+                <input id="sidea" type="number"/>
+                <label> Enter side1 of the triangle</label>
+            </div>
+            <br>
+            <div>
+                <input id="sideb" type="number"/>  
+                <label> Enter side2 of the triangle</label>
+            </div>
+            <br>
+            <div>
+                <input id="sidec" type="number"/>   
+                <label> Enter side3 of the triangle</label>
+            </div>
+           <br>
+            
+            <button  onclick="areaOfTriangle()">Calculate Area</button>
+            <h4 id="area_triangle"></h4>
+        </div>
+        
+        
+    </div>
+<script>
+  function areaOfrectangle (){
+    var length = parseInt(document.getElementById("length").value);
+    var breadth = parseInt(document.getElementById("width").value);
+    if (length < 0 || breadth < 0) {
+        alert("Please enter positive values for length and width.");
+        return;
+    }
+    var area = length * breadth;
+    document.getElementById("ans").innerHTML = area;
+  }
+    function areaOfCircle (){
+        var radius = parseInt(document.getElementById("radius").value);
+        if (radius < 0) {
+        alert("Please enter a positive value for radius.");
+        return;
+    }
+        var area = 3.14 * radius * radius;
+        document.getElementById("ans1").innerHTML = area;
+    }
+    function areaOfTriangle (){
+        var sidea = parseInt(document.getElementById("sidea").value);
+        var sideb = parseInt(document.getElementById("sideb").value);
+        var sidec = parseInt(document.getElementById("sidec").value);
+        if (sidea < 0 || sideb < 0 || sidec < 0) {
+        alert("Please enter positive values for all sides of the triangle.");
+        return;
+    }
+        var s = (sidea + sideb + sidec)/2;
+        var area = Math.sqrt(s*(s-sidea)*(s-sideb)*(s-sidec));
+
+        
+        document.getElementById("area_triangle").innerHTML = area;
+    }
+</script>
+</body>
+</html>

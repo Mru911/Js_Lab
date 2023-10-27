@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expt_4</title>
+  </head>
+  <body style="text-align: center">
+    <h2>42215 Mrugank</h2>
+    <h1>String Comparison</h1>
+
+    <br />
+    String 1= <input type="text" id="st1" value=" " />
+    <br />
+    String 2= <input type="text" id="st2" value=" " />
+    <br />
+    <button
+      style="background: rgb(255, 255, 255); padding: 3px; margin-top: 20px"
+      id="Btn"
+      onclick="compareStrings()"
+    >
+      Compare Strings
+    </button>
+
+    <br />Result using to uppercase() method=
+    <p id="casing"></p>
+    <br />
+    Result using to RegEx method:
+    <p id="regex"></p>
+    <br />
+    Result using localeCompare method:
+    <p id="locom"></p>
+    <br />
+    Result using Strict Eqaulity method:
+    <p id="strequality"></p>
+
+    <script>
+      function compareStrings() {
+        var string1 = document.getElementById("st1").value;
+        var string2 = document.getElementById("st2").value;
+        com1(string1, string2);
+        com2(string1, string2);
+        com3(string1, string2);
+        com4(string1, string2);
+      }
+
+      function com1(string1, string2) {
+        var ot;
+        const result1 = string1.toUpperCase() === string2.toUpperCase();
+
+        if (result1) {
+          ot = "The strings are similar ";
+        } else {
+          ot = "The strings are not similar ";
+        }
+
+        document.getElementById("casing").innerHTML = ot;
+      }
+
+      function com2(string1, string2) {
+        const pattern = new RegExp(string1, "gi");
+        var otp;
+
+        const result2 = pattern.test(string2);
+
+        if (result2) {
+          otp = "The strings are similar <br><br>";
+        } else {
+          otp = "The strings are not similar <br><br>";
+        }
+        document.getElementById("regex").innerHTML = otp;
+      }
+
+      function com3(string1, string2) {
+        var otp;
+        const result3 = string1.localeCompare(string2, undefined, {
+          sensitivity: "base",
+        });
+
+        if (result3 == 0) {
+          otp = "The strings are similar <br><br>";
+        } else {
+          otp = "The strings are not similar <br><br>";
+        }
+
+        document.getElementById("locom").innerHTML = otp;
+      }
+
+      function com4(string1, string2) {
+        var otp;
+
+        if (string1 === string2) {
+          otp = "The strings are similar <br><br>";
+        } else {
+          otp = "The strings are not similar";
+        }
+
+        document.getElementById("strequality").innerHTML = otp;
+      }
+    </script>
+  </body>
+</html>

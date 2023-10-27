@@ -1,0 +1,101 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 07</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        div {
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 15px;
+        }
+        p{
+            font-size: medium;
+            font-weight: 600;
+        }
+    </style>
+    
+    <script >let myArray = [];
+        function addValues(){
+          const x = document.getElementById('addElement').value;
+          if(x){
+            myArray.push(x);
+            updateRes();
+            document.getElementById('addElement').value = "";
+          }
+        
+        }
+        function addToArray(){
+           key =  document.getElementById('Key').value;
+           val = document.getElementById('Value').value;
+           newval={};
+           newval[key] = val;
+            myArray.push(newval);
+        
+            document.getElementById("res").innerHTML= `Object added to ${myArray} is ${key}:${val}`
+          console.log(newval)
+          console.log(myArray)
+          
+        }
+        function checkValues(){
+         const val = Array.isArray(myArray);
+         document.getElementById('res').innerHTML = "isArray ?" + val;
+        }
+        
+        function emptyValues(){
+            myArray = [];
+            updateRes();
+        }
+        function updateRes(){
+            document.getElementById('res').innerHTML = `Array: [${myArray.join(",")}]`;
+        }
+        
+        </script>
+</head>
+<body style="text-align: center;">
+    <p> Experiment 7</p>
+    <p>42230 Rajsing Jadhav</p>
+    <h1>Array Operations</h1>
+    <div>
+        <label for="addElement"></label>
+        <input type="text" name="addElement" id="addElement" placeholder="Enter a value">
+        <button onclick="addValues()">Add Element</button>
+    </div>
+    <div>
+        
+        <input type="text" id="Key" placeholder="Enter a key">
+        <input type="text" id="Value" placeholder="Enter a value">
+        <button onclick="addToArray()">Add Object</button>
+    </div>
+    <div>
+       
+        <button onclick="checkValues()">Check Element</button>
+    </div>
+    <div>
+        <span> Press here to empty the array</span>
+        <button onclick="emptyValues()">Empty array</button>
+    </div>
+    <div id="res"></div>
+</body>
+</html>
